@@ -4,9 +4,9 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
-const LoginForm = ({ login }) => {
+const LoginForm = () => {
   const navigate = useNavigate();
-  const { register, handleSubmit, reset } = useForm({
+  const { register, handleSubmit } = useForm({
     defaultValues: {
       email: "",
       password: "",
@@ -22,19 +22,9 @@ const LoginForm = ({ login }) => {
   };
 
   const onSubmit = async (data) => {
-    try {
-      const response = await axios.post(
-        import.meta.env.VITE_API_URL + "/login",
-        data
-      );
-      if (response.data) {
-        console.log(response.data);
-        sessionStorage.setItem("userInfo", JSON.stringify(response.data));
-        navigate("/home");
-      }
-    } catch (e) {
-      console.error(e);
-    }
+    // 1.) Submit form to "/login" api endpoint
+    // 2.) On successful login, save user info in sessionStorage
+    // 3.) Navigate to home route ("/home")
   };
 
   return (

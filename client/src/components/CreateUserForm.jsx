@@ -19,17 +19,8 @@ const CreateUserForm = () => {
   };
 
   const onSubmit = async (form) => {
-    try {
-      const response = await axios.post(
-        import.meta.env.VITE_API_URL + "/createUser",
-        form
-      );
-      if (response.data) {
-        navigate("/");
-      }
-    } catch (e) {
-      console.error(e);
-    }
+    // 1.) submit form to "/createUser endpoint"
+    // 2.) navigate to route with login form ("/") if create was successful
   };
 
   return (
